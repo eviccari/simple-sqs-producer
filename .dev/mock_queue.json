@@ -1,0 +1,4 @@
+{
+  "RedrivePolicy": "{\"http://localhost:4566/000000000000/test-dlq-queue\",\"maxReceiveCount\":\"1000\"}",
+  "MessageRetentionPeriod": "259200"
+}
