@@ -1,0 +1,6 @@
+{
+  "appName": "simple-sqs-producer",
+  "httpPort": 8080,
+  "loggingLevel": "DEBUG",
+  "awsEndpoint" : "http://local_stack:4566"
+}

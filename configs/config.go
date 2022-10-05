@@ -13,6 +13,7 @@ const (
 	DefaultHTTPPort     = 8080
 	DefaultLoggingLevel = "INFO"
 	ConfigPath          = "./cmd/.env"
+	ContainerConfigPath = ".env"
 	ConfigType          = "json"
 	ConfigFile          = "configs"
 )
@@ -46,6 +47,7 @@ func GetAWSEndpoint() string {
 
 func init() {
 	viper.AddConfigPath(ConfigPath)
+	viper.AddConfigPath(ContainerConfigPath)
 	viper.SetConfigType(ConfigType)
 	viper.SetConfigName(ConfigFile)
 
