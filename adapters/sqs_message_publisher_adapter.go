@@ -2,6 +2,7 @@ package adapters
 
 import (
 	"context"
+	"fmt"
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/sqs"
@@ -43,10 +44,11 @@ func (sqsmpa *SQSMessagePublisherAdapter) Send(ctx context.Context, message stri
 	})
 
 	if err != nil {
+		sqsmpa.logger.Error(fmt.Sprintf("adapter layer error: %s", err.Error()))
 		return "", err
 	}
 
-	sqsmpa.logger.Info(output)
+	sqsmpa.logger.Info(fmt.Sprintf("message sent with success. generated id: %s", *output.MessageId))
 	protocolID = *output.MessageId
 	return
 }

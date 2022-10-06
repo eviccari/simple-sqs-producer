@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
+	"fmt"
 	"github.com/eviccari/rest-http-utils/httperrors"
 	"github.com/eviccari/rest-http-utils/httputils"
 	"github.com/eviccari/simple-sqs-producer/adapters"
@@ -62,6 +63,7 @@ func (mph *MessageProducerHandler) HandlePOST(w http.ResponseWriter, r *http.Req
 
 	protocolID, err := mph.service.Send(ctx, inputMessagePayload.Message, queueName)
 	if err != nil {
+		mph.logger.Error(fmt.Sprintf("handler layer error: %s", err.Error()))
 		httputils.WriteJSONErrorResponse(w, httperrors.NewInternalServerError(err))
 		return
 	}

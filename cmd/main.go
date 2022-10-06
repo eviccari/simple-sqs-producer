@@ -37,7 +37,7 @@ func main() {
 
 	sess := infra.GetAWSSession()
 	mpa := adapters.NewSQSMessagePublisherAdapter(sess, &logger)
-	service := services.NewBasicMessageProducerService(mpa)
+	service := services.NewBasicMessageProducerService(mpa, &logger)
 	messageProducerHandler := handlers.NewMessageProducerHandler(ctx, service, &logger)
 	healthCheckHandler := handlers.NewHealthCheckHandler(ctx, &logger)
 	swaggerURL := fmt.Sprintf("http://localhost:%d/swagger/doc.json", configs.GetHTTPPort())
