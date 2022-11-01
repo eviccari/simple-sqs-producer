@@ -41,5 +41,5 @@ func init() {
 	})
 
 	logrus.SetReportCaller(false)
-	logrus.SetLevel(4)
+	logrus.SetLevel(6)
 }

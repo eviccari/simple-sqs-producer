@@ -8,7 +8,7 @@ services:
     depends_on:
       - local_stack
     networks:
-      - localhost
+      - local_network
 
   local_stack:
     image: localstack/localstack
@@ -16,9 +16,7 @@ services:
       - "4566:4566"
       - "4510-4559:4510-4559"
     networks:
-      - localhost
+      - local_network
 
 networks:
-  localhost:
-
-
+  local_network:

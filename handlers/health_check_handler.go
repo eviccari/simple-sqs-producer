@@ -35,4 +35,5 @@ func NewHealthCheckHandler(ctx context.Context, logger adapters.LoggerAdapter) *
 func (hch *HealthCheckHandler) HandleGET(w http.ResponseWriter, r *http.Request) {
 	hch.logger.Info(fmt.Sprintf("origin: %s, check system health: OK", r.Host))
 	httputils.WriteJSONResponse(w, dtos.NewHealthCheckDTO(), http.StatusOK)
+	return
 }

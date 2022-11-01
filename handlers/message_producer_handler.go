@@ -46,7 +46,7 @@ func NewMessageProducerHandler(ctx context.Context, service services.MessageProd
 func (mph *MessageProducerHandler) HandlePOST(w http.ResponseWriter, r *http.Request) {
 	queueName := httputils.GetValueFromHeader(r, "x-app-queue-url")
 	if queueName == "" {
-		httputils.WriteJSONErrorResponse(w, httperrors.NewBadRequestError(errors.New("x-app-queue-name is required")))
+		httputils.WriteJSONErrorResponse(w, httperrors.NewBadRequestError(errors.New("x-app-queue-url is required")))
 		return
 	}
 
